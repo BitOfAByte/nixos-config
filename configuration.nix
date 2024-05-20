@@ -22,12 +22,12 @@
   };
 
   # Home Manager configuration
-  home-manager = {
-    extraSpecialArgs = { inherit inputs; };
-    users = {
-      "toby" = import ./home.nix;
-    };
-  };
+
+  home-manager.nixosModules.home-manager = {
+    home-manager.useGlobalPkgs = true;
+    home-manager.useUserPackages = true;
+    home-manager.users.toby = import ./home.nix;
+};
 
   # Bootloader configuration
   boot.loader.systemd-boot.enable = true;
