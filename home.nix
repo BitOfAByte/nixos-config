@@ -6,7 +6,7 @@
   
   # User-specific configuration
   home.username = "toby";
-  home.homeDirectory = "/home/toby/";
+  home.homeDirectory = "/home/toby";
   
   # Allow unfree packages if needed
   nixpkgs.config.allowUnfree = true;
