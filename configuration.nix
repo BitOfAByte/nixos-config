@@ -10,7 +10,7 @@
     inputs.home-manager.nixosModules.default # Home Manager module
     # ./nvidia.nix                         # NVIDIA configuration (commented out)
     # ./kde.nix # KDE configuration (commented out)
-    ./home.nix
+    #./home.nix
   ];
 
   # User configuration
