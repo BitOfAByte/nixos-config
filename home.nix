@@ -1,6 +1,9 @@
 { config, pkgs, ... }:
 
 {
+
+  # Home Manager needs a bit of information about you and the paths it should
+  # manage.
   home.username = "toby";
   home.homeDirectory = "/home/toby";
 
@@ -13,12 +16,88 @@
   # release notes.
   home.stateVersion = "23.11"; # Please read the comment before changing.
 
+  nixpkgs.config.allowUnfree = true;
+  # The home.packages option allows you to install Nix packages into your
+  # environment.
   home.packages = with pkgs; [
+    # # It is sometimes useful to fine-tune packages, for example, by applying
+    # # overrides. You can do that directly here, just don't forget the
+    # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
+    # # fonts?
+    # (pkgs.nerdfonts.override { fonts = [ "jetbrains-mono" ]; })
 
+    # # You can also create simple shell scripts directly inside your
+    # # configuration. For example, this adds a command 'my-hello' to your
+    # # environment:
+    # (pkgs.writeShellScriptBin "my-hello" ''
+    #   echo "Hello, ${config.home.username}!"
+
+    # '')
+
+    # applications
+    firefox
+    kate
+    alacritty
+    neovim
+    thunderbird
+    warp-terminal
+    github-desktop
+    jetbrains.idea-ultimate
+    unityhub
+    jetbrains.rider
+    davinci-resolve-studio
+    kcalc
+    krita
+    filezilla
+
+    # gaming
+    steam
+    heroic
+    lutris
+    # vesktop
+    armcord
+    bottles
+    element
+
+    obs-studio
+    mpv
+
+
+    # terminal tools
+    tree
+    git
+    ripgrep
+    wget
+    eza
+    bat
+    zoxide # very cool cd alternative
+    freshfetch # since neofetch is dead
+    neofetch
+    nushell # An interesting bash alternative
+    starship # the prompt manager that makes it look fancy
+    carapace # Auto completion for the shell
+
+# dumb dependencies
+    gcc
+    xsel
+    openjdk21
+    maven
+    nodejs
+    cargo
+    # gnutar # i dont remember why i needed this
+    dotnetCorePackages.sdk_6_0_1xx
+    ffmpeg
+    lazygit
+
+# fun
+    cmatrix
+    handbrake
+    telegram-desktop
+    gimp
+    waydroid
   ];
 
-
-  #Home Manager is pretty good at managing dotfiles. The primary way to manage
+  # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
   home.file = {
     # # Building this configuration will create a copy of 'dotfiles/screenrc' in
@@ -47,18 +126,19 @@
   #
   # or
   #
-  #  /etc/profiles/per-user/deekahy/etc/profile.d/hm-session-vars.sh
+  #  /etc/profiles/per-user/toby/etc/profile.d/hm-session-vars.sh
   #
   home.sessionVariables = {
     # EDITOR = "emacs";
   };
 
 
+
   programs = {
     nushell = { enable = true;
 # The config.nu can be anywhere you want if you like to edit your Nushell with Nu
       configFile.source = ./home/toby/.config/nushell/config.nu;
-# for editing directly to config.nu 
+# for editing directly to config.nu
       extraConfig = ''
         let carapace_completer = {|spans|
           carapace $spans.0 nushell $spans | from json
@@ -72,14 +152,14 @@ case_sensitive: false # case-sensitive completions
                   algorithm: "fuzzy"    # prefix or fuzzy
                   external: {
 # set to false to prevent nushell looking into $env.PATH to find more suggestions
-enable: true 
+enable: true
 # set to lower can improve completion performance at the cost of omitting some options
-          max_results: 100 
-          completer: $carapace_completer # check 'carapace_completer' 
+          max_results: 100
+          completer: $carapace_completer # check 'carapace_completer'
                   }
              }
-      } 
-      $env.PATH = ($env.PATH | 
+      }
+      $env.PATH = ($env.PATH |
           split row (char esep) |
           prepend /home/myuser/.apps |
           append /usr/bin/env
@@ -91,14 +171,14 @@ enable: true
 # nano = "hx";
         cd = "z";
       };
-    };  
+    };
     carapace.enable = true;
     carapace.enableNushellIntegration = true;
 
     starship = { enable = true;
       settings = {
         add_newline = true;
-        character = { 
+        character = {
           success_symbol = "[➜](bold green)";
           error_symbol = "[➜](bold red)";
         };
@@ -108,5 +188,3 @@ enable: true
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 }
-
-
