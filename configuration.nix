@@ -9,7 +9,8 @@
     ./hardware-configuration.nix          # Include hardware configuration
     inputs.home-manager.nixosModules.default # Home Manager module
     # ./nvidia.nix                         # NVIDIA configuration (commented out)
-    # ./kde.nix                            # KDE configuration (commented out)
+    # ./kde.nix # KDE configuration (commented out)
+    ./home.nix
   ];
 
   # User configuration
