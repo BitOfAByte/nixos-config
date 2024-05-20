@@ -1,3 +1,4 @@
+
 {
   description = "Nixos config flake";
 
@@ -14,6 +15,7 @@
   outputs = { self, nixpkgs, ... }@inputs: {
     nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
       specialArgs = {inherit inputs;};
+      defaultPackage = inputs.nixpkgs.stdenv.lib.pkgsForSuffix "x86_64-linux";
       modules = [
         ./configuration.nix
         inputs.home-manager.nixosModules.default
