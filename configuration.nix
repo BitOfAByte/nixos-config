@@ -29,6 +29,8 @@
     users.toby = import ./home.nix;
 };
 
+  home-manager.backupFileExtension = "backup";
+
   # Bootloader configuration
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
