@@ -14,7 +14,6 @@
   # Define packages to be installed
   home.packages = with pkgs; [
     firefox
-    findup
     kate
     alacritty
     neovim
@@ -59,7 +58,6 @@
     lazygit
     cmatrix
     handbrake
-    vesktop
     telegram-desktop
     gimp
     waydroid
@@ -109,7 +107,7 @@
     carapace.enable = true;
     carapace.enableNushellIntegration = true;
 
-    alacritty = {
+    starship = {
       enable = true;
       settings = {
         add_newline = true;
