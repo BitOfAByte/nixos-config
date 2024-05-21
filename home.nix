@@ -13,6 +13,7 @@
 
   # Define packages to be installed
   home.packages = with pkgs; [
+    vesktop
     firefox
     kate
     alacritty
