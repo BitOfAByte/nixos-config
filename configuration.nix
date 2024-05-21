@@ -24,9 +24,9 @@
   # Home Manager configuration
 
   home-manager = {
-    home-manager.useGlobalPkgs = true;
-    home-manager.useUserPackages = true;
-    home-manager.users.toby = import ./home.nix;
+    useGlobalPkgs = true;
+    useUserPackages = true;
+    users.toby = import ./home.nix;
 };
 
   # Bootloader configuration
