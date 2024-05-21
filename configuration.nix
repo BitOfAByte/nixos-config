@@ -21,6 +21,7 @@
     packages = with pkgs; [ ];
   };
 
+  users.defaultUserShell = pkgs.nushell;
   # Home Manager configuration
 
   home-manager = {
@@ -115,6 +116,7 @@
     driSupport32Bit = true;
   };
 
+
   # System packages
   environment.systemPackages = with pkgs; [
     inputs.nix-software-center.packages.${system}.nix-software-center
@@ -125,7 +127,7 @@
     mangohud
     libsForQt5.qtstyleplugin-kvantum
     xorg.xrandr
-gparted
+    gparted
     jellyfin-media-player
   ];
   # NH program configuration
