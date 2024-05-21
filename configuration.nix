@@ -72,7 +72,7 @@
   # services.xserver.videoDrivers = [ "nvd" ];  # Alternative driver (commented out)
     hardware.nvidia.modesetting.enable = true;
   # X11 keymap configuration
-  services.xserver.xkb.layout = "us";
+  #services.xserver.xkb.layout = "us";
   services.xserver.xkb.variant = "";
 
   # Enable CUPS for printing
