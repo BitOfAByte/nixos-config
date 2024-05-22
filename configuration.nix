@@ -74,6 +74,7 @@
   services.xserver.videoDrivers = [ "nvidia" ];
   # services.xserver.videoDrivers = [ "nvd" ];  # Alternative driver (commented out)
     hardware.nvidia.modesetting.enable = true;
+    hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.stable;
   # X11 keymap configuration
   #services.xserver.xkb.layout = "us";
   services.xserver.xkb.variant = "";

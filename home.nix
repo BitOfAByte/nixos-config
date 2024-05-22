@@ -16,6 +16,8 @@
     vesktop
     firefox
     kate
+    kitty
+    obsidian
     alacritty
     neovim
     thunderbird
