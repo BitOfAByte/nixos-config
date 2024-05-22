@@ -17,6 +17,10 @@
     firefox
     kate
     kitty
+    postgresql
+    jetbrains.datagrip
+    pgadmin4-desktopmode
+    brave
     obsidian
     alacritty
     neovim

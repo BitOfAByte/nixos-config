@@ -72,11 +72,9 @@
 
   # Video driver configuration
   services.xserver.videoDrivers = [ "nvidia" ];
-  # services.xserver.videoDrivers = [ "nvd" ];  # Alternative driver (commented out)
-    hardware.nvidia.modesetting.enable = true;
-    hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.stable;
+  hardware.nvidia.modesetting.enable = true;
+  hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.stable;
   # X11 keymap configuration
-  #services.xserver.xkb.layout = "us";
   services.xserver.xkb.variant = "";
 
   # Enable CUPS for printing
@@ -153,4 +151,26 @@
   # Enable Bluetooth
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = true;
+
+
+  services.postgresql = {
+   enable = true;
+   authentication = pkgs.lib.mkOverride 10 ''
+      #type database  DBuser  auth-method
+      local all       postgres     trust
+    '';
+   package = pkgs.postgresql_16;
+     initialScript = pkgs.writeText "backend-initScript" ''
+    CREATE ROLE toby WITH LOGIN PASSWORD 'Hyg57aff' CREATEDB;
+    CREATE DATABASE toby;
+    GRANT ALL PRIVILEGES ON DATABASE toby TO toby;
+  '';
+    identMap = ''
+    # ArbitraryMapName systemUser DBUser
+       superuser_map      root      postgres
+       superuser_map      postgres  postgres
+       # Let other names login as themselves
+       superuser_map      /^(.*)$   \1
+  '';
+  };
 }
