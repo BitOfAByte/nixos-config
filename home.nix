@@ -14,7 +14,6 @@
   # Define packages to be installed
   home.packages = with pkgs; [
     vesktop
-    firefox
     kate
     kitty
     postgresql
@@ -36,6 +35,7 @@
     krita
     filezilla
     steam
+    jdk22
     heroic
     lutris
     armcord
@@ -57,7 +57,6 @@
     carapace
     gcc
     xsel
-    openjdk21
     maven
     nodejs
     cargo
