@@ -18,6 +18,7 @@
     kate
     kitty
     postgresql
+    vscode
     jetbrains.datagrip
     pgadmin4-desktopmode
     brave
