@@ -57,6 +57,7 @@
     carapace
     gcc
     xsel
+    lunar-client
     maven
     nodejs
     cargo
