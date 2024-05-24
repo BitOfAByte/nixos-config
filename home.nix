@@ -17,6 +17,7 @@
     kate
     kitty
     postgresql
+    wine
     vscode
     jetbrains.datagrip
     pgadmin4-desktopmode
