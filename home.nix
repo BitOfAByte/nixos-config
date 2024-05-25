@@ -14,6 +14,7 @@
   # Define packages to be installed
   home.packages = with pkgs; [
     vesktop
+    spotify
     kate
     kitty
     postgresql
