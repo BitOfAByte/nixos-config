@@ -10,14 +10,15 @@
   
   # Allow unfree packages if needed
   nixpkgs.config.allowUnfree = true;
-
+  # I am stupid
   # Define packages to be installed
   home.packages = with pkgs; [
     vesktop
     kate
     kitty
     postgresql
-    wine
+    sidequest
+    wine64
     vscode
     jetbrains.datagrip
     pgadmin4-desktopmode
