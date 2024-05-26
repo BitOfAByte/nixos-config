@@ -21,18 +21,16 @@
     postgresql
     wine
     vscode
-    jetbrains.datagrip
     pgadmin4-desktopmode
     brave
     obsidian
     alacritty
     neovim
     thunderbird
+    jetbrains.idea-ultimate
     warp-terminal
     github-desktop
-    jetbrains.idea-ultimate
     unityhub
-    jetbrains.rider
     davinci-resolve-studio
     kcalc
     krita
