@@ -15,6 +15,7 @@
   home.packages = with pkgs; [
     vesktop
     spotify
+    jdk22
     kate
     kitty
     postgresql
@@ -37,7 +38,6 @@
     krita
     filezilla
     steam
-    jdk22
     heroic
     lutris
     armcord

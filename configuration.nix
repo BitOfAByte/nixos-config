@@ -141,8 +141,8 @@
   # Session variables
   environment.sessionVariables = {
      STEAM_EXTRA_COMPAT_TOOLS_PATHS = "/home/toby/.steam/root/compatibilitytools.d";
+     JAVA_HOME = "/nix/storek65yq9109hqbjlg7sfhcnadga9avqvpm-openjdk-22+36";
      NIXOS_OZONE_WL = "1";
-     JAVA_HOME = "/nix/store/k65yq9109hqbjlg7sfhcnadga9avqvpm-openjdk-22+36";
    };
 
   # System state version
