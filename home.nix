@@ -13,21 +13,19 @@
 
   # Define packages to be installed
   home.packages = with pkgs; [
-    vesktop
     spotify
     jdk22
     kate
     kitty
     postgresql
-    wine
+    kubernetes
+    kubectl
     vscode
     pgadmin4-desktopmode
-    brave
     obsidian
     alacritty
     neovim
     thunderbird
-    jetbrains.idea-ultimate
     warp-terminal
     github-desktop
     unityhub

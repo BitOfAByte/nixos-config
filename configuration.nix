@@ -1,4 +1,11 @@
 { config, pkgs, lib, inputs, ... }:
+let
+  # Reference the stable nixpkgs
+  stablePkgs = import inputs.stablenixpkgs {
+    system = pkgs.system;
+    config = { allowUnfree = true; };  # If you use any unfree packages
+  };
+in
 
 {
   # Enable experimental Nix features
@@ -18,10 +25,18 @@
     isNormalUser = true;
     description = "toby";
     extraGroups = [ "networkmanager" "wheel" "disk" ];
-    packages = with pkgs; [ ];
+    shell = pkgs.nushell;
+    packages = with stablePkgs; [
+      jetbrains.idea-ultimate
+      scenebuilder
+      vesktop
+      firefox
+      jetbrains.datagrip
+      javaPackages.openjfx21
+      wine64
+    ];
   };
 
-  users.defaultUserShell = pkgs.nushell;
   # Home Manager configuration
 
   home-manager = {
@@ -73,7 +88,7 @@
   # Video driver configuration
   services.xserver.videoDrivers = [ "nvidia" ];
   hardware.nvidia.modesetting.enable = true;
-  hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.stable;
+  hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.beta;
   # X11 keymap configuration
   services.xserver.xkb.variant = "";
 
@@ -139,6 +154,8 @@
 
   virtualisation.waydroid.enable = true;
   # Session variables
+  
+  programs.nix-ld.enable = true;
   environment.sessionVariables = {
      STEAM_EXTRA_COMPAT_TOOLS_PATHS = "/home/toby/.steam/root/compatibilitytools.d";
      JAVA_HOME = "/nix/storek65yq9109hqbjlg7sfhcnadga9avqvpm-openjdk-22+36";
