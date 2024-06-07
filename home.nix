@@ -17,13 +17,11 @@
     jdk22
     kate
     kitty
-    postgresql
     kubernetes
     kubectl
     vscode
     pgadmin4-desktopmode
     obsidian
-    alacritty
     neovim
     thunderbird
     warp-terminal
@@ -33,7 +31,6 @@
     kcalc
     krita
     filezilla
-    steam
     heroic
     lutris
     armcord
@@ -41,6 +38,7 @@
     element
     obs-studio
     mpv
+    starship
     tree
     git
     ripgrep
@@ -50,8 +48,6 @@
     zoxide
     freshfetch
     neofetch
-    nushell
-    starship
     carapace
     gcc
     xsel
@@ -77,52 +73,6 @@
   # Define environment variables
   home.sessionVariables = {
     # Example: EDITOR = "emacs";
-  };
-
-  # Define and enable programs
-  programs = {
-    nushell = {
-      enable = true;
-      configFile.source = ./config.nu;
-      extraConfig = ''
-        let carapace_completer = {|spans|
-          carapace $spans.0 nushell $spans | from json
-        }
-      $env.config = {
-        show_banner: false,
-        completions: {
-          case_sensitive: false,
-          quick: true,
-          partial: true,
-          algorithm: "fuzzy",
-          external: {
-            enable: true,
-            max_results: 100,
-            completer: $carapace_completer
-          }
-        }
-      }
-      $env.PATH = ($env.PATH | split row (char esep) | prepend /home/toby/.apps | append /usr/bin/env)
-      '';
-      shellAliases = {
-        vi = "nvim";
-        vim = "nvim";
-        cd = "z";
-      };
-    };
-    carapace.enable = true;
-    carapace.enableNushellIntegration = true;
-
-    starship = {
-      enable = true;
-      settings = {
-        add_newline = true;
-        character = {
-          success_symbol = "[➜](bold green)";
-          error_symbol = "[➜](bold red)";
-        };
-      };
-    };
   };
 
   # Enable Home Manager

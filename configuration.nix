@@ -25,18 +25,34 @@ in
     isNormalUser = true;
     description = "toby";
     extraGroups = [ "networkmanager" "wheel" "disk" ];
-    shell = pkgs.nushell;
+    shell = pkgs.zsh;
     packages = with stablePkgs; [
-      jetbrains.idea-ultimate
       scenebuilder
-      vesktop
-      firefox
+      jetbrains-toolbox
+      pgadmin4-desktopmode
+      docker
+      oh-my-zsh
+      zsh
+      tldr
+      dart
+      alacritty
+      bun
+      gparted
+      drawio
       jetbrains.datagrip
+      firefox
       javaPackages.openjfx21
       wine64
+      armcord
     ];
   };
 
+  systemd.targets.sleep.enable = false;
+  systemd.targets.suspend.enable = false;
+  systemd.targets.hibernate.enable = false;
+  systemd.targets.hybrid-sleep.enable = false;
+
+  programs.zsh.enable = true;
   # Home Manager configuration
 
   home-manager = {
@@ -169,25 +185,8 @@ in
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = true;
 
-
-  services.postgresql = {
-   enable = true;
-   authentication = pkgs.lib.mkOverride 10 ''
-      #type database  DBuser  auth-method
-      local all       postgres     trust
-    '';
-   package = pkgs.postgresql_16;
-     initialScript = pkgs.writeText "backend-initScript" ''
-    CREATE ROLE toby WITH LOGIN PASSWORD 'Hyg57aff' CREATEDB;
-    CREATE DATABASE toby;
-    GRANT ALL PRIVILEGES ON DATABASE toby TO toby;
-  '';
-    identMap = ''
-    # ArbitraryMapName systemUser DBUser
-       superuser_map      root      postgres
-       superuser_map      postgres  postgres
-       # Let other names login as themselves
-       superuser_map      /^(.*)$   \1
-  '';
+  virtualisation.docker.rootless = {
+    enable = true;
+    setSocketVariable = true;
   };
 }
