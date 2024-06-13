@@ -1,4 +1,6 @@
 { config, pkgs, lib, inputs, ... }:
+
+
 let
   # Reference the stable nixpkgs
   stablePkgs = import inputs.stablenixpkgs {
@@ -8,6 +10,11 @@ let
 in
 
 {
+  
+programs.hyprland = {
+    enable = true;
+    package = inputs.hyprland.packages.${pkgs.system}.hyprland;
+};
   # Enable experimental Nix features
   nix.settings.experimental-features = "nix-command flakes";
 
@@ -39,11 +46,15 @@ in
       bun
       gparted
       drawio
-      jetbrains.datagrip
+      teamspeak_server
+      teamspeak5_client
+      wireshark
+      #jetbrains.datagrip
+      #brave
       firefox
       javaPackages.openjfx21
+      discord
       wine64
-      armcord
     ];
   };
 

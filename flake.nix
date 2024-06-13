@@ -6,7 +6,7 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nix-software-center.url = "github:snowfallorg/nix-software-center";
     stablenixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
-
+    hyprland.url =github:hyprwm/Hyprland;
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
